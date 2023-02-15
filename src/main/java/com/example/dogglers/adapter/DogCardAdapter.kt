@@ -24,6 +24,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dogglers.R
 import com.example.dogglers.const.Layout
+import com.example.dogglers.data.DataSource
 import com.example.dogglers.data.DataSource.dogs
 import com.example.dogglers.model.Dog
 
@@ -37,7 +38,7 @@ class DogCardAdapter(
 ): RecyclerView.Adapter<DogCardAdapter.DogCardViewHolder>() {
 
     // TODO: Initialize the data using the List found in data/DataSource
-    private val dogs: List<Dog> = listOf()
+    private val dogs: List<Dog> = DataSource.dogs
 
     /**
      * Initialize view elements
@@ -56,18 +57,18 @@ class DogCardAdapter(
         //  if the layout variable is Layout.GRID the grid list item should be used. Otherwise the
         //  the vertical/horizontal list item should be used.
 
-        val adapterLayout = LayoutInflater.from(parent.context)
+        var adapterLayout = LayoutInflater.from(parent.context)
 
         // TODO Inflate the layout
         .inflate(R.layout.activity_grid_list, parent, false)
 
         when(layout) {
             Layout.GRID->{
-                val adapterLayout = LayoutInflater.from(parent.context)
+                 adapterLayout = LayoutInflater.from(parent.context)
                     .inflate(R.layout.grid_list_item, parent, false)
             }
                 Layout.VERTICAL, Layout.HORIZONTAL ->{
-                    val adapterLayout = LayoutInflater.from(parent.context)
+                     adapterLayout = LayoutInflater.from(parent.context)
                         .inflate(R.layout.vertical_horizontal_list_item, parent, false)
 
                 }
